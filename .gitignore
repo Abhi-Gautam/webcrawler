@@ -1,0 +1,46 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Scrapy cache
+.scrapy/
+
+# Logs
+*.log
+
+# MacOS files
+.DS_Store
+
+# Docker files
+*.swp
+
+# PyCharm and VSCode settings
+.idea/
+.vscode/
+
+# Node modules (if using Node.js)
+node_modules/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# Build directories
+build/
+dist/
+
+# Kubernetes configs and secrets
+*.yaml
+*.yml
+*.pem
+*.key
