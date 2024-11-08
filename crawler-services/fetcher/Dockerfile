@@ -6,7 +6,7 @@ WORKDIR /app
 # Copy the requirements file and install dependencies
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-COPY fetcher_service/scrapy.cfg ./
-COPY fetcher_service/fetcher_service/ ./fetcher_service/
+COPY /scrapy.cfg ./
+COPY fetcher_service/ ./fetcher_service/
 
 ENV KAFKA_BOOTSTRAP_SERVERS=kafka:9092
