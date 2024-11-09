@@ -41,6 +41,5 @@ dist/
 
 # Kubernetes configs and secrets
 *.yaml
-*.yml
 *.pem
 *.key
