@@ -13,6 +13,7 @@ class FetcherSpider(scrapy.Spider):
         'DOWNLOAD_DELAY': 1,
         'CONCURRENT_REQUESTS_PER_DOMAIN': 8,
         'ROBOTSTXT_OBEY': True,
+        'DEPTH_LIMIT' : 1
     }
 
     def __init__(self, *args, **kwargs):
