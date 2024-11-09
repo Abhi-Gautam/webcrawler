@@ -9,7 +9,6 @@ services:
       - "2181:2181"
     networks:
       - crawler_network
-    profiles: ["infra"]
 
   kafka:
     image: confluentinc/cp-kafka:7.4.0
@@ -25,7 +24,6 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
       - crawler_network
-    profiles: ["infra"]
     
   redis:
     image: redis:7.0.12-alpine
@@ -34,7 +32,6 @@ services:
       - "6379:6379"
     networks:
       - crawler_network
-    profiles: ["infra"]
   
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -47,7 +44,6 @@ services:
       KAFKA_CLUSTERS_0_ZOOKEEPER: "zookeeper:2181"
     networks:
       - crawler_network
-    profiles: ["infra"]
 
   fetcher_service:
     build:
@@ -57,11 +53,10 @@ services:
       - kafka
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
-      - START_URLS=https://seikowatches.co.in
+      - START_URLS=https://en.wikipedia.org/wiki/Watch
     networks:
       - crawler_network
     command: scrapy crawl fetcher_spider
-    profiles: ["apps"]
 
   parser_service:
     build:
@@ -76,7 +71,6 @@ services:
       - REDIS_PORT=6379
     networks:
       - crawler_network
-    profiles: ["apps"]
 
 networks:
   crawler_network:
