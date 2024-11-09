@@ -1,3 +1,4 @@
+import datetime
 import os
 import json
 import logging
@@ -47,7 +48,7 @@ def main():
             # Prepare parsed data
             parsed_data = {
                 'url': url,
-                'title': title,
+                'title': title
                 # Add other extracted data as needed
             }
 

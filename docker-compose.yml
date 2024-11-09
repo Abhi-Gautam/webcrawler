@@ -33,6 +33,14 @@ services:
     networks:
       - crawler_network
   
+  mongo:
+    image: mongo:6.0.6
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - crawler_network
+
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     container_name: kafka-ui
@@ -53,7 +61,7 @@ services:
       - kafka
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
-      - START_URLS=https://en.wikipedia.org/wiki/Watch
+      - START_URLS=https://www.seikowatches.com/in-en
     networks:
       - crawler_network
     command: scrapy crawl fetcher_spider
@@ -69,6 +77,22 @@ services:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+    networks:
+      - crawler_network
+  
+  storage_service:
+    build:
+      context: ./crawler-services/storage
+    container_name: storage_service
+    depends_on:
+      - kafka
+      - mongo
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - MONGO_DB_NAME=web_crawler
+      - MONGO_COLLECTION_NAME=pages
     networks:
       - crawler_network
 
