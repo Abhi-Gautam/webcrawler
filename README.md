@@ -7,20 +7,10 @@ This project aims to build a modern, scalable web crawler using microservices ar
 - **Crawler Services**
   - Fetcher
   - Parser
-  - Scheduler
   - Storage
-  - Common Utilities
-- **Stream Processing**
-  - Event Consumers
-  - Data Transformers
-  - Analytics
 - **Visualization**
   - Frontend
   - Backend
-- **Infrastructure**
-  - Docker configurations
-  - Kubernetes manifests
-  - Deployment scripts
 - **Documentation**
 
 ## Getting Started
